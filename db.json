@@ -1,0 +1,338 @@
+{
+  "admins": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "role": "Admin"
+    }
+  ],
+  "roles": [
+    {
+      "name": "HR",
+      "permissions": {
+        "Employees": {
+          "view": true,
+          "create": true,
+          "edit": true,
+          "delete": true
+        },
+        "Projects": {
+          "edit": true,
+          "delete": true,
+          "create": true,
+          "view": true
+        },
+        "Tasks": {
+          "view": true,
+          "create": true,
+          "edit": true,
+          "delete": true
+        },
+        "Notifications": {
+          "delete": true,
+          "edit": true,
+          "create": true,
+          "view": true
+        },
+        "Roles": {
+          "view": true,
+          "create": true,
+          "edit": true,
+          "delete": true
+        }
+      },
+      "id": "rGxGxh3seHA"
+    },
+    {
+      "name": "Frontend Developer",
+      "permissions": {
+        "Projects": {
+          "view": true,
+          "create": true,
+          "edit": true,
+          "delete": false
+        },
+        "Tasks": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Notifications": {
+          "view": true,
+          "edit": true
+        },
+        "Employees": {
+          "view": true,
+          "delete": false,
+          "edit": false,
+          "create": false
+        }
+      },
+      "id": "yfpX37mocAM"
+    },
+    {
+      "name": "Backend Developer",
+      "permissions": {
+        "Projects": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Tasks": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Notifications": {
+          "view": true,
+          "edit": false
+        },
+        "Employees": {
+          "view": true
+        }
+      },
+      "id": "v0XvADEYPu8"
+    },
+    {
+      "name": "UI/UX Designer",
+      "permissions": {
+        "Projects": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Tasks": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Notifications": {
+          "view": true,
+          "edit": true
+        }
+      },
+      "id": "FyzZcawaSR4"
+    },
+    {
+      "name": "Tester",
+      "permissions": {
+        "Projects": {
+          "view": true,
+          "create": true,
+          "edit": true,
+          "delete": false
+        },
+        "Tasks": {
+          "view": true,
+          "create": true,
+          "edit": true
+        },
+        "Notifications": {
+          "edit": true,
+          "create": true,
+          "view": true
+        }
+      },
+      "id": "d5Vy_llem4g"
+    }
+  ],
+  "employees": [
+    {
+      "name": "Hasna",
+      "email": "hasna@gmail.com",
+      "password": "has123",
+      "role": "HR",
+      "id": "B5wIHlxFV24"
+    },
+    {
+      "name": "Zaii",
+      "email": "zai@gmail.com",
+      "password": "zai123",
+      "role": "Backend Developer",
+      "id": "j9p7oXffgb4"
+    },
+    {
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "password": "ram123",
+      "role": "UI/UX Designer",
+      "id": "U3wMAQSzl8E"
+    },
+    {
+      "name": "Husna",
+      "email": "husna@gmail.com",
+      "password": "hus123",
+      "role": "Tester",
+      "id": "P432t3ery8w"
+    },
+    {
+      "name": "Aliya",
+      "email": "aliya@gmail.com",
+      "password": "aliya123",
+      "role": "Frontend Developer",
+      "id": "lEBczuUFuFY"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Life-Insurance",
+      "description": "website for life insurance company. it should be clean user friendly and responsive",
+      "team": [
+        "1DB7FxdJ8UU",
+        "j9p7oXffgb4",
+        "U3wMAQSzl8E",
+        "P432t3ery8w"
+      ],
+      "id": "rTaE5hQZz30"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Team Management",
+      "projectId": null,
+      "assignedTo": "B5wIHlxFV24",
+      "status": "To Do",
+      "priority": "Medium",
+      "dueDate": "2026-04-11",
+      "id": "DbinrwyaBYU"
+    },
+    {
+      "title": "Frontend developing",
+      "projectId": null,
+      "assignedTo": "1DB7FxdJ8UU",
+      "status": "Done",
+      "priority": "Medium",
+      "dueDate": "2026-04-11",
+      "id": "c-Tr5-T5NYk"
+    },
+    {
+      "title": "Backend Developing",
+      "projectId": null,
+      "assignedTo": "j9p7oXffgb4",
+      "dueDate": "2026-04-11",
+      "status": "To Do",
+      "priority": "Medium",
+      "id": "ukxui7Kt23o"
+    },
+    {
+      "title": "Front-end ",
+      "projectId": "rTaE5hQZz30",
+      "assignedTo": "1DB7FxdJ8UU",
+      "dueDate": "2026-04-18",
+      "status": "In Progress",
+      "id": "mS-aCXC66fQ"
+    },
+    {
+      "title": "Backend",
+      "projectId": "rTaE5hQZz30",
+      "assignedTo": "j9p7oXffgb4",
+      "dueDate": "",
+      "status": "To Do",
+      "id": "B7AYtq1hEqI"
+    },
+    {
+      "title": "UI Desingning",
+      "projectId": "rTaE5hQZz30",
+      "assignedTo": "U3wMAQSzl8E",
+      "dueDate": "",
+      "status": "To Do",
+      "id": "TS27EfJkc8o"
+    },
+    {
+      "title": "Team Lead",
+      "projectId": "rTaE5hQZz30",
+      "assignedTo": "j9p7oXffgb4",
+      "dueDate": "2026-05-18",
+      "status": "To Do",
+      "id": "3VEKwQWOguE"
+    },
+    {
+      "title": "Testing",
+      "projectId": null,
+      "assignedTo": "P432t3ery8w",
+      "dueDate": "2026-04-11",
+      "status": "To Do",
+      "id": "WxFpHpFXSJI"
+    },
+    {
+      "title": "abc",
+      "projectId": null,
+      "assignedTo": "2N2JMMcSITE",
+      "dueDate": "0026-02-14",
+      "status": "To Do",
+      "id": "gXhs97fep8E"
+    }
+  ],
+  "notifications": [
+    {
+      "userId": "j9p7oXffgb4",
+      "message": "Added to Project: Life-Insurance",
+      "read": true,
+      "id": "Y79SU69DtvU"
+    },
+    {
+      "userId": "U3wMAQSzl8E",
+      "message": "Added to Project: Life-Insurance",
+      "read": false,
+      "id": "k767rRJjGKs"
+    },
+    {
+      "userId": "1DB7FxdJ8UU",
+      "message": "Added to Project: Life-Insurance",
+      "read": true,
+      "id": "AwnLpqbeQng"
+    },
+    {
+      "userId": "j9p7oXffgb4",
+      "message": "New Task Assigned: Team Lead",
+      "read": true,
+      "id": "YJIiPzVLFWo"
+    },
+    {
+      "userId": "U3wMAQSzl8E",
+      "type": "task",
+      "title": "UI Designing",
+      "projectId": "rTaE5hQZz30",
+      "read": false,
+      "date": "2026-03-31T16:55:26.209Z",
+      "id": "7_UNTAjcqxI"
+    },
+    {
+      "userId": "j9p7oXffgb4",
+      "type": "task",
+      "title": "Team Lead",
+      "projectId": "rTaE5hQZz30",
+      "read": false,
+      "date": "2026-04-02T05:04:42.220Z",
+      "id": "V6UwOodNxGY"
+    },
+    {
+      "userId": "2N2JMMcSITE",
+      "type": "project",
+      "title": "abc",
+      "read": false,
+      "date": "2026-04-02T09:26:47.462Z",
+      "id": "mchVyAyT77E"
+    },
+    {
+      "userId": "P432t3ery8w",
+      "type": "project",
+      "title": "abc",
+      "read": false,
+      "date": "2026-04-02T09:26:47.500Z",
+      "id": "lisc4XnGk_4"
+    },
+    {
+      "userId": "2N2JMMcSITE",
+      "type": "task",
+      "title": "abc",
+      "projectId": null,
+      "read": false,
+      "date": "2026-04-02T09:29:07.972Z",
+      "id": "KFLX0LPOtPQ"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
