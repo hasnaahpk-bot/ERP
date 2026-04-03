@@ -1,54 +1,113 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card";
 import { AppContext } from "../context/AppContext";
 
 const AdminDashboard = () => {
   const { employees, projects, tasks } = useContext(AppContext);
   const navigate = useNavigate();
 
+  // ✅ Project Status Count
+  const statusCount = {
+    todo: 0,
+    inProgress: 0,
+    done: 0,
+  };
+
+  projects.forEach((p) => {
+    if (p.status === "Done") statusCount.done++;
+    else if (p.status === "In Progress") statusCount.inProgress++;
+    else statusCount.todo++;
+  });
+
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="w-full p-5 md:p-8 space-y-10">
 
-<div className="w-full">        
+      {/* 📊 STATS */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        {/* 📊 STATS */}
-        <div className="p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <Card title="Total Employees" value={employees.length} />
-          <Card title="Total Projects" value={projects.length} />
-          <Card title="Total Tasks" value={tasks.length} />
+        <div className="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+          <p className="text-gray-400 text-sm">Employees</p>
+          <h2 className="text-3xl font-semibold text-gray-900 mt-2">
+            {employees.length}
+          </h2>
         </div>
 
-        {/* ⚙️ ACTIONS */}
-        <div className="p-4 md:p-6">
-          <h2 className="text-xl font-bold mb-4">Manage</h2>
+        <div className="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+          <p className="text-gray-400 text-sm">Projects</p>
+          <h2 className="text-3xl font-semibold text-gray-900 mt-2">
+            {projects.length}
+          </h2>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            
-            <button
-              onClick={() => navigate("/admin/employees")}
-              className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition"
-            >
-              Add Employee
-            </button>
+        <div className="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+          <p className="text-gray-400 text-sm">Tasks</p>
+          <h2 className="text-3xl font-semibold text-gray-900 mt-2">
+            {tasks.length}
+          </h2>
+        </div>
 
-            <button
-              onClick={() => navigate("/admin/projects")}
-              className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition"
-            >
-              Add Project
-            </button>
+      </div>
 
-            <button
-              onClick={() => navigate("/admin/tasks")}
-              className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition"
-            >
-              Add Task
-            </button>
+      {/* 📌 STATUS SECTION (SEPARATE) */}
+      <div className="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition max-w-md">
 
+        <h3 className="text-gray-600 text-sm mb-4 font-medium">
+          Project Status
+        </h3>
+
+        <div className="space-y-3 text-sm">
+
+          <div className="flex justify-between items-center">
+            <span className="text-gray-500">To Do</span>
+            <span className="font-semibold">{statusCount.todo}</span>
           </div>
+
+          <div className="flex justify-between items-center">
+            <span className="text-yellow-600">In Progress</span>
+            <span className="font-semibold">{statusCount.inProgress}</span>
+          </div>
+
+          <div className="flex justify-between items-center">
+            <span className="text-green-600">Done</span>
+            <span className="font-semibold">{statusCount.done}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* ⚙️ ACTIONS */}
+      <div>
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          Manage
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+          <button
+            onClick={() => navigate("/admin/employees")}
+            className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-xl shadow-sm hover:shadow-md transition"
+          >
+            Add Employee
+          </button>
+
+          <button
+            onClick={() => navigate("/admin/projects")}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-xl shadow-sm hover:shadow-md transition"
+          >
+            Add Project
+          </button>
+
+          <button
+            onClick={() => navigate("/admin/tasks")}
+            className="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-xl shadow-sm hover:shadow-md transition"
+          >
+            Add Task
+          </button>
+
         </div>
       </div>
+
     </div>
   );
 };

@@ -16,10 +16,12 @@ const Projects = () => {
     name: "",
     description: "",
     team: [],
+    startDate: "",
+    endDate: "",
+    status: "To Do", // ✅ added
   });
 
   const { paginate } = usePagination();
-
   const { data: paginatedProjects, totalPages } =
     paginate("projects", projects, 4);
 
@@ -78,7 +80,14 @@ const Projects = () => {
   };
 
   const reset = () => {
-    setForm({ name: "", description: "", team: [] });
+    setForm({
+      name: "",
+      description: "",
+      team: [],
+      startDate: "",
+      endDate: "",
+      status: "To Do", // ✅ added
+    });
     setShowModal(false);
   };
 
@@ -114,12 +123,21 @@ const Projects = () => {
                 {p.name}
               </h3>
 
+              {/* ✅ STATUS (added) */}
+              <p className="text-sm text-gray-500 mt-1">
+                Status: {p.status || "To Do"}
+              </p>
+
               <p className="text-sm text-gray-500 mt-1">
                 {p.description}
               </p>
 
               <p className="text-sm mt-2 text-gray-600">
                 Team: {p.team?.length || 0} members
+              </p>
+
+              <p className="text-sm text-gray-500 mt-1">
+                {p.startDate} -to- {p.endDate}
               </p>
 
               <div className="flex gap-4 mt-4 text-sm font-medium">
@@ -205,6 +223,57 @@ const Projects = () => {
                     })
                   }
                 />
+              )}
+
+              {/* START DATE */}
+              {mode === "view" ? (
+                <p className="p-3 bg-gray-50 border rounded">
+                  Start: {selectedProject?.startDate || "N/A"}
+                </p>
+              ) : (
+                <input
+                  type="date"
+                  className="w-full p-3 border rounded-lg"
+                  value={form.startDate}
+                  onChange={(e) =>
+                    setForm({ ...form, startDate: e.target.value })
+                  }
+                />
+              )}
+
+              {/* END DATE */}
+              {mode === "view" ? (
+                <p className="p-3 bg-gray-50 border rounded">
+                  End: {selectedProject?.endDate || "N/A"}
+                </p>
+              ) : (
+                <input
+                  type="date"
+                  className="w-full p-3 border rounded-lg"
+                  value={form.endDate}
+                  onChange={(e) =>
+                    setForm({ ...form, endDate: e.target.value })
+                  }
+                />
+              )}
+
+              {/* ✅ STATUS DROPDOWN */}
+              {mode === "view" ? (
+                <p className="p-3 bg-gray-50 border rounded">
+                  Status: {selectedProject?.status || "To Do"}
+                </p>
+              ) : (
+                <select
+                  className="w-full p-3 border rounded-lg"
+                  value={form.status}
+                  onChange={(e) =>
+                    setForm({ ...form, status: e.target.value })
+                  }
+                >
+                  <option value="To Do">To Do</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Done">Done</option>
+                </select>
               )}
 
               {/* TEAM */}

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import API from "../../api/api";
 import { usePagination } from "../../context/PaginationContext";
 import Pagination from "../../components/Pagination";
-import { toast } from "react-toastify";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
@@ -39,57 +38,34 @@ const Employees = () => {
     fetchRoles();
   }, []);
 
-  // Check if email is already used by another employee
-  const isDuplicateEmail = (email, excludeId = null) => {
-    return employees.some(
-      (emp) =>
-        emp.email.toLowerCase() === email.toLowerCase() &&
-        emp.id !== excludeId
-    );
-  };
-
   const handleAdd = async () => {
-    if (!form.name || !form.role) {
-      toast.error("Name & Role required");
-      return;
-    }
-    if (!form.email) {
-      toast.error("Email required");
-      return;
-    }
-    if (isDuplicateEmail(form.email)) {
-      toast.error("This email is already used by another employee");
-      return;
-    }
+    if (!form.name || !form.role)
+      return alert("Name & Role required");
 
     await API.post("/employees", form);
-    toast.success("Employee added successfully");
     fetchEmployees();
     reset();
   };
 
   const handleUpdate = async () => {
-    if (isDuplicateEmail(form.email, selectedEmployee.id)) {
-      toast.error("This email is already used by another employee");
-      return;
-    }
-
     await API.put(`/employees/${selectedEmployee.id}`, form);
-    toast.success("Employee updated");
     fetchEmployees();
     setShowModal(false);
   };
 
   const handleDelete = async (id) => {
     await API.delete(`/employees/${id}`);
-    toast.success("Employee deleted");
     fetchEmployees();
   };
 
   const reset = () => {
-    setForm({ name: "", email: "", password: "", role: "" });
+    setForm({
+      name: "",
+      email: "",
+      password: "",
+      role: "",
+    });
     setShowModal(false);
-    setSelectedEmployee(null);
   };
 
   return (
@@ -102,10 +78,16 @@ const Employees = () => {
             <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
               Employees
             </h2>
+
             <button
               onClick={() => {
                 setMode("add");
-                setForm({ name: "", email: "", password: "", role: "" });
+                setForm({
+                  name: "",
+                  email: "",
+                  password: "",
+                  role: "",
+                });
                 setShowModal(true);
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
@@ -121,18 +103,26 @@ const Employees = () => {
                 key={emp.id}
                 className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition"
               >
-                <h3 className="font-semibold text-gray-900">{emp.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{emp.email}</p>
-                <p className="text-sm text-blue-600 mt-1 font-medium">{emp.role}</p>
+                <h3 className="font-semibold text-gray-900">
+                  {emp.name}
+                </h3>
 
-                <div className="flex justify-between mt-5 text-sm font-medium">
+                <p className="text-sm text-gray-500 mt-1">
+                  {emp.email}
+                </p>
+
+                <p className="text-sm text-blue-600 mt-1 font-medium">
+                  {emp.role}
+                </p>
+
+                <div className="flex gap-4 mt-4 text-sm font-medium">
                   <button
                     onClick={() => {
                       setSelectedEmployee(emp);
                       setMode("view");
                       setShowModal(true);
                     }}
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-blue-600 hover:underline"
                   >
                     View
                   </button>
@@ -140,23 +130,18 @@ const Employees = () => {
                   <button
                     onClick={() => {
                       setSelectedEmployee(emp);
-                      setForm({
-                        name: emp.name,
-                        email: emp.email,
-                        password: emp.password,
-                        role: emp.role,
-                      });
+                      setForm(emp);
                       setMode("edit");
                       setShowModal(true);
                     }}
-                    className="text-green-600 hover:text-green-800"
+                    className="text-green-600 hover:underline"
                   >
                     Edit
                   </button>
 
                   <button
                     onClick={() => handleDelete(emp.id)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:underline"
                   >
                     Delete
                   </button>
@@ -165,20 +150,23 @@ const Employees = () => {
             ))}
           </div>
 
+          {/* PAGINATION */}
           <Pagination section="employees" totalPages={totalPages} />
+
         </div>
 
         {/* MODAL */}
         {showModal && (
           <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 px-3">
             <div className="bg-white w-full max-w-md p-6 rounded-2xl border border-gray-200 shadow-xl">
-
+              
               <h2 className="text-xl font-semibold text-gray-900 mb-5 capitalize">
                 {mode} Employee
               </h2>
 
               <div className="space-y-4">
 
+                {/* NAME */}
                 {mode === "view" ? (
                   <p className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
                     {selectedEmployee?.name}
@@ -188,10 +176,13 @@ const Employees = () => {
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="Name"
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
                   />
                 )}
 
+                {/* EMAIL */}
                 {mode === "view" ? (
                   <p className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
                     {selectedEmployee?.email}
@@ -200,12 +191,14 @@ const Employees = () => {
                   <input
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="Email"
-                    type="email"
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                   />
                 )}
 
+                {/* PASSWORD */}
                 {mode === "view" ? (
                   <p className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
                     ********
@@ -214,12 +207,17 @@ const Employees = () => {
                   <input
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="Password"
-                    type="password"
                     value={form.password}
-                    onChange={(e) => setForm({ ...form, password: e.target.value })}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        password: e.target.value,
+                      })
+                    }
                   />
                 )}
 
+                {/* ROLE */}
                 {mode === "view" ? (
                   <p className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
                     {selectedEmployee?.role}
@@ -228,7 +226,9 @@ const Employees = () => {
                   <select
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                     value={form.role}
-                    onChange={(e) => setForm({ ...form, role: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, role: e.target.value })
+                    }
                   >
                     <option value="">Select Role</option>
                     {roles.map((r) => (
@@ -241,9 +241,10 @@ const Employees = () => {
 
               </div>
 
+              {/* ACTIONS */}
               <div className="flex justify-end gap-3 mt-6">
                 <button
-                  onClick={reset}
+                  onClick={() => setShowModal(false)}
                   className="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100"
                 >
                   Close

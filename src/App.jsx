@@ -15,7 +15,10 @@ import Roles from "./pages/Roles";
 
 // Employee Pages
 import EmployeeDashboard from "./pages/EmployeeDashboard";
-import EmployeeView from "./pages/employee/EmployeeView";
+import Eprojects from "./pages/employee/Eprojects";
+import Etasks from "./pages/employee/Etasks";
+import Emp from "./pages/employee/Emp";
+import Eroles from "./pages/employee/Eroles";
 
 function App() {
   return (
@@ -36,23 +39,11 @@ function App() {
 
         {/* EMPLOYEE ROUTES - permission-based using single EmployeeView component */}
         <Route path="/employee" element={<EmployeeLayout />}>
-          <Route index element={<EmployeeDashboard />} />
-          <Route
-            path="employees"
-            element={<EmployeeView section="Employees" />}
-          />
-          <Route
-            path="roles"
-            element={<EmployeeView section="Roles" />}
-          />
-          <Route
-            path="projects"
-            element={<EmployeeView section="Projects" />}
-          />
-          <Route
-            path="tasks"
-            element={<EmployeeView section="Tasks" />}
-          />
+        <Route index element={<EmployeeDashboard />} />
+        <Route path="roles" element={<Eroles />} />
+          <Route path="projects" element={<Eprojects />} />
+          <Route path="tasks" element={<Etasks />} />
+          <Route path="employees" element={<Emp/>}/>
         </Route>
 
       </Routes>

@@ -14,9 +14,9 @@
       "permissions": {
         "Employees": {
           "view": true,
-          "create": true,
-          "edit": true,
-          "delete": true
+          "create": false,
+          "edit": false,
+          "delete": false
         },
         "Projects": {
           "edit": true,
@@ -31,15 +31,15 @@
           "delete": true
         },
         "Notifications": {
-          "delete": true,
-          "edit": true,
-          "create": true,
+          "delete": false,
+          "edit": false,
+          "create": false,
           "view": true
         },
         "Roles": {
           "view": true,
-          "create": true,
-          "edit": true,
+          "create": false,
+          "edit": false,
           "delete": true
         }
       },
@@ -116,26 +116,26 @@
       "id": "FyzZcawaSR4"
     },
     {
-      "name": "Tester",
+      "name": "manager",
       "permissions": {
-        "Projects": {
-          "view": true,
-          "create": true,
+        "Roles": {
           "edit": true,
-          "delete": false
+          "view": true
+        },
+        "Employees": {
+          "view": true
+        },
+        "Projects": {
+          "view": true
         },
         "Tasks": {
-          "view": true,
-          "create": true,
-          "edit": true
+          "view": true
         },
         "Notifications": {
-          "edit": true,
-          "create": true,
           "view": true
         }
       },
-      "id": "d5Vy_llem4g"
+      "id": "heJuKC66voE"
     }
   ],
   "employees": [
@@ -173,6 +173,13 @@
       "password": "aliya123",
       "role": "Frontend Developer",
       "id": "lEBczuUFuFY"
+    },
+    {
+      "name": "athira",
+      "email": "ath@gmail.com",
+      "password": "1234",
+      "role": "manager",
+      "id": "xvgq0uQtHvo"
     }
   ],
   "projects": [
@@ -185,43 +192,44 @@
         "U3wMAQSzl8E",
         "P432t3ery8w"
       ],
-      "id": "rTaE5hQZz30"
+      "id": "rTaE5hQZz30",
+      "startDate": "2026-03-29",
+      "endDate": "2026-04-21",
+      "status": "Done"
+    },
+    {
+      "name": "ZARA",
+      "description": "",
+      "team": [
+        "B5wIHlxFV24",
+        "j9p7oXffgb4",
+        "U3wMAQSzl8E"
+      ],
+      "id": "9-67klh3bF0",
+      "startDate": "2026-04-01",
+      "endDate": "2026-04-20",
+      "status": "In Progress"
+    },
+    {
+      "name": "wd",
+      "description": "dfgha",
+      "team": [
+        "xvgq0uQtHvo",
+        "lEBczuUFuFY",
+        "U3wMAQSzl8E"
+      ],
+      "id": "HVoh7MbHid0",
+      "startDate": "2026-04-03",
+      "endDate": "2026-05-08"
     }
   ],
   "tasks": [
-    {
-      "title": "Team Management",
-      "projectId": null,
-      "assignedTo": "B5wIHlxFV24",
-      "status": "To Do",
-      "priority": "Medium",
-      "dueDate": "2026-04-11",
-      "id": "DbinrwyaBYU"
-    },
-    {
-      "title": "Frontend developing",
-      "projectId": null,
-      "assignedTo": "1DB7FxdJ8UU",
-      "status": "Done",
-      "priority": "Medium",
-      "dueDate": "2026-04-11",
-      "id": "c-Tr5-T5NYk"
-    },
-    {
-      "title": "Backend Developing",
-      "projectId": null,
-      "assignedTo": "j9p7oXffgb4",
-      "dueDate": "2026-04-11",
-      "status": "To Do",
-      "priority": "Medium",
-      "id": "ukxui7Kt23o"
-    },
     {
       "title": "Front-end ",
       "projectId": "rTaE5hQZz30",
       "assignedTo": "1DB7FxdJ8UU",
       "dueDate": "2026-04-18",
-      "status": "In Progress",
+      "status": "Done",
       "id": "mS-aCXC66fQ"
     },
     {
@@ -229,7 +237,7 @@
       "projectId": "rTaE5hQZz30",
       "assignedTo": "j9p7oXffgb4",
       "dueDate": "",
-      "status": "To Do",
+      "status": "Done",
       "id": "B7AYtq1hEqI"
     },
     {
@@ -237,7 +245,7 @@
       "projectId": "rTaE5hQZz30",
       "assignedTo": "U3wMAQSzl8E",
       "dueDate": "",
-      "status": "To Do",
+      "status": "Done",
       "id": "TS27EfJkc8o"
     },
     {
@@ -245,24 +253,40 @@
       "projectId": "rTaE5hQZz30",
       "assignedTo": "j9p7oXffgb4",
       "dueDate": "2026-05-18",
-      "status": "To Do",
+      "status": "Done",
       "id": "3VEKwQWOguE"
     },
     {
-      "title": "Testing",
-      "projectId": null,
-      "assignedTo": "P432t3ery8w",
-      "dueDate": "2026-04-11",
+      "title": "ba",
+      "projectId": "9-67klh3bF0",
+      "assignedTo": "j9p7oXffgb4",
+      "dueDate": "2026-04-16",
       "status": "To Do",
-      "id": "WxFpHpFXSJI"
+      "id": "zFuBGi8K7kU"
     },
     {
-      "title": "abc",
-      "projectId": null,
-      "assignedTo": "2N2JMMcSITE",
-      "dueDate": "0026-02-14",
+      "title": "ffq",
+      "projectId": "rTaE5hQZz30",
+      "assignedTo": "j9p7oXffgb4",
+      "dueDate": "2026-04-23",
+      "status": "Done",
+      "id": "Mm2vev6r7aw"
+    },
+    {
+      "title": "df",
+      "projectId": "9-67klh3bF0",
+      "assignedTo": "B5wIHlxFV24",
+      "dueDate": "2026-04-16",
       "status": "To Do",
-      "id": "gXhs97fep8E"
+      "id": "ekQkro7ZT8Q"
+    },
+    {
+      "title": "we",
+      "projectId": "HVoh7MbHid0",
+      "assignedTo": "xvgq0uQtHvo",
+      "dueDate": "2026-05-01",
+      "status": "To Do",
+      "id": "UFEE_Zi4xqY"
     }
   ],
   "notifications": [
@@ -304,7 +328,7 @@
       "type": "task",
       "title": "Team Lead",
       "projectId": "rTaE5hQZz30",
-      "read": false,
+      "read": true,
       "date": "2026-04-02T05:04:42.220Z",
       "id": "V6UwOodNxGY"
     },
@@ -332,6 +356,56 @@
       "read": false,
       "date": "2026-04-02T09:29:07.972Z",
       "id": "KFLX0LPOtPQ"
+    },
+    {
+      "userId": "B5wIHlxFV24",
+      "type": "project",
+      "title": "ZARA",
+      "read": true,
+      "date": "2026-04-02T23:18:25.016Z",
+      "id": "zQuPeMORS54"
+    },
+    {
+      "userId": "j9p7oXffgb4",
+      "type": "project",
+      "title": "ZARA",
+      "read": true,
+      "date": "2026-04-02T23:18:25.059Z",
+      "id": "aD1DOK_R-SM"
+    },
+    {
+      "userId": "B5wIHlxFV24",
+      "type": "task",
+      "title": "df",
+      "projectId": "9-67klh3bF0",
+      "read": false,
+      "date": "2026-04-02T23:23:53.311Z",
+      "id": "3vVb7-E2VQ0"
+    },
+    {
+      "userId": "lEBczuUFuFY",
+      "type": "project",
+      "title": "wd",
+      "read": false,
+      "date": "2026-04-03T06:01:42.623Z",
+      "id": "fi18GpYRpos"
+    },
+    {
+      "userId": "U3wMAQSzl8E",
+      "type": "project",
+      "title": "wd",
+      "read": false,
+      "date": "2026-04-03T06:01:42.649Z",
+      "id": "OuAJUlH01e8"
+    },
+    {
+      "userId": "xvgq0uQtHvo",
+      "type": "task",
+      "title": "we",
+      "projectId": "HVoh7MbHid0",
+      "read": false,
+      "date": "2026-04-03T06:03:29.323Z",
+      "id": "_w5JOviXzcU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
