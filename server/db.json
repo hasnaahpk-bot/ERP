@@ -196,31 +196,6 @@
       "startDate": "2026-03-29",
       "endDate": "2026-04-21",
       "status": "Done"
-    },
-    {
-      "name": "ZARA",
-      "description": "",
-      "team": [
-        "B5wIHlxFV24",
-        "j9p7oXffgb4",
-        "U3wMAQSzl8E"
-      ],
-      "id": "9-67klh3bF0",
-      "startDate": "2026-04-01",
-      "endDate": "2026-04-20",
-      "status": "In Progress"
-    },
-    {
-      "name": "wd",
-      "description": "dfgha",
-      "team": [
-        "xvgq0uQtHvo",
-        "lEBczuUFuFY",
-        "U3wMAQSzl8E"
-      ],
-      "id": "HVoh7MbHid0",
-      "startDate": "2026-04-03",
-      "endDate": "2026-05-08"
     }
   ],
   "tasks": [
@@ -258,7 +233,7 @@
     },
     {
       "title": "ba",
-      "projectId": "9-67klh3bF0",
+      "projectId": null,
       "assignedTo": "j9p7oXffgb4",
       "dueDate": "2026-04-16",
       "status": "To Do",
@@ -274,7 +249,7 @@
     },
     {
       "title": "df",
-      "projectId": "9-67klh3bF0",
+      "projectId": null,
       "assignedTo": "B5wIHlxFV24",
       "dueDate": "2026-04-16",
       "status": "To Do",
@@ -282,7 +257,7 @@
     },
     {
       "title": "we",
-      "projectId": "HVoh7MbHid0",
+      "projectId": null,
       "assignedTo": "xvgq0uQtHvo",
       "dueDate": "2026-05-01",
       "status": "To Do",
@@ -377,7 +352,7 @@
       "userId": "B5wIHlxFV24",
       "type": "task",
       "title": "df",
-      "projectId": "9-67klh3bF0",
+      "projectId": null,
       "read": false,
       "date": "2026-04-02T23:23:53.311Z",
       "id": "3vVb7-E2VQ0"
@@ -402,7 +377,7 @@
       "userId": "xvgq0uQtHvo",
       "type": "task",
       "title": "we",
-      "projectId": "HVoh7MbHid0",
+      "projectId": null,
       "read": false,
       "date": "2026-04-03T06:03:29.323Z",
       "id": "_w5JOviXzcU"

@@ -3,6 +3,7 @@ import API from "../../api/api";
 import { ProjectContext } from "../../context/ProjectContext";
 import { usePagination } from "../../context/PaginationContext";
 import Pagination from "../../components/Pagination";
+import Swal from "sweetalert2";
 
 const Projects = () => {
   const { projects, employees, fetchData } =
@@ -61,14 +62,68 @@ const Projects = () => {
     }
   };
 
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await API.delete(`/projects/${id}`);
+  //     fetchData();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const handleDelete = async (id) => {
+  const result = await Swal.fire({
+    title: "Delete?",
+    text: "This action cannot be undone",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete",
+    cancelButtonText: "Cancel",
+
+    width: "320px",
+    padding: "1rem",
+
+    confirmButtonColor: "#ef4444",
+    cancelButtonColor: "#9ca3af",
+
+    backdrop: "rgba(0,0,0,0.3)",
+
+    // ✅ make it square
+    customClass: {
+      popup: "square-alert",
+    },
+  });
+
+  if (result.isConfirmed) {
     try {
       await API.delete(`/projects/${id}`);
+
+      Swal.fire({
+        icon: "success",
+        title: "Deleted",
+        toast: true,
+        position: "top-end",
+        timer: 1200,
+        showConfirmButton: false,
+        customClass: {
+          popup: "square-alert",
+        },
+      });
+
       fetchData();
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "Delete failed",
+        width: "300px",
+        customClass: {
+          popup: "square-alert",
+        },
+      });
     }
-  };
+  }
+};
 
   const handleTeamSelect = (id) => {
     setForm((prev) => ({
